@@ -5,9 +5,14 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
+  @Get()
+  home() {
+    return 'Welcome to my Movie API';
+  }
+
   // express의 router.get() 역할
   // 데코레이터는 꾸며주는 함수 & 클래스랑 붙어있어야한다
-  @Get()
+  @Get('/hello')
   getHello(): string {
     // nestJS에선 콘트롤러와 비즈니스 로직을 분리한다
     // Controller -> 헤당 url로 가면 함수를 실행
@@ -15,7 +20,7 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get('/hello')
+  @Get('/everyone')
   sayHello(): string {
     return this.appService.getEveryone();
   }
