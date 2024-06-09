@@ -22,6 +22,17 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+## NestJS Init
+
+```bash
+# Your CDM in PC
+$ npm i -g @nestjs/cli
+# Check install NestJS Completely
+$ nest
+# Init NestJS in You want Directory Path
+$ nest new
+```
+
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
