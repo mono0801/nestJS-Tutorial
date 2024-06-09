@@ -33,6 +33,17 @@ $ nest
 $ nest new
 ```
 
+## npm module
+
+```bash
+# 데이터의 유효성 검사
+$ npm i class-validator
+# nest의 pipe에서 자동으로 데이터 타입 변환
+$ npm i class-transformer
+# 타입을 변환 시켜주는 패키지
+$ npm i @nestjs/mapped-types
+```
+
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.

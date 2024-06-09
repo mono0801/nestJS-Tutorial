@@ -9,14 +9,10 @@ import {
   Put,
   Query,
 } from '@nestjs/common';
+import { CreateMovieDto } from './dto/create-movie.dto';
+import { UpdateMovieDto } from './dto/update-movie.dto';
 import { Movie } from './entities/movie.entity';
 import { MoviesService } from './movies.service';
-
-interface IMovieData {
-  title: string;
-  year: number;
-  genres: string[];
-}
 
 // @Controller('movies') -> app.use('/movies')
 @Controller('movies')
@@ -33,27 +29,31 @@ export class MoviesController {
 
   @Get(':id(\\d+)')
   // 파라미터의 id 데이터를 'movieId'라는 string 타입 변수에 저장
-  getOne(@Param('id') movieId: string): Movie {
+  getOne(@Param('id') movieId: number): Movie {
+    console.log(typeof movieId);
     return this.moviesService.getOne(movieId);
   }
 
   @Post()
   // @Body == req.body : json과 같은 post를 통해 전송한 데이터를 가져올 때 사용
-  createMovie(@Body() movieData: IMovieData) {
+  createMovie(@Body() movieData: CreateMovieDto) {
     // 가져온 데이터가 json 타입이면 자동으로 json으로 인식한다
     // express 처럼 json을 인식하기 위해 사전 설정을 안해도 된다
     return this.moviesService.create(movieData);
   }
 
   @Delete(':id(\\d+)')
-  removeMovie(@Param('id') movieId: string) {
+  removeMovie(@Param('id') movieId: number) {
     return this.moviesService.deleteOne(movieId);
   }
 
   // 특정 리소스만 업데이트
   @Patch(':id(\\d+)')
   // id 파라미터와 Body의 데이터를 같이 가져오기
-  updateMovie(@Param('id') movieId: string, @Body() updateData: IMovieData) {
+  updateMovie(
+    @Param('id') movieId: number,
+    @Body() updateData: UpdateMovieDto,
+  ) {
     return this.moviesService.update(movieId, updateData);
   }
 
@@ -67,5 +67,10 @@ export class MoviesController {
   // @Query() : url의 쿼리를 가져옴
   searchMovie(@Query('year') searchYear: number) {
     return `We are searching for a movie made after : ${searchYear}`;
+  }
+
+  @Get('test/:id(\\d+)')
+  test(@Param('id') id: number) {
+    return `Params : ${id}`;
   }
 }
