@@ -28,6 +28,10 @@ export class MoviesService {
     return true;
   }
 
+  deleteAll(): Movie[] {
+    return (this.movies = []);
+  }
+
   create(movieData: CreateMovieDto): Boolean {
     this.movies.push({
       id: this.movies.length + 1,

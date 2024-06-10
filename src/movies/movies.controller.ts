@@ -33,9 +33,10 @@ export class MoviesController {
   }
 
   @Get(':id(\\d+)')
-  // 파라미터의 id 데이터를 'movieId'라는 string 타입 변수에 저장
+  // 파라미터의 id는 string이다
+  // 파라미터의 id 데이터를 'movieId'라는 number 타입 변수에 저장
   getOne(@Param('id') movieId: number): Movie {
-    console.log(typeof movieId);
+    console.log(movieId);
     return this.moviesService.getOne(movieId);
   }
 
@@ -45,6 +46,11 @@ export class MoviesController {
     // 가져온 데이터가 json 타입이면 자동으로 json으로 인식한다
     // express 처럼 json을 인식하기 위해 사전 설정을 안해도 된다
     return this.moviesService.create(movieData);
+  }
+
+  @Delete()
+  removeMovieALL() {
+    return this.moviesService.deleteAll();
   }
 
   @Delete(':id(\\d+)')
