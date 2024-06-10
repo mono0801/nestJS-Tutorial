@@ -25,11 +25,11 @@
 ## NestJS Init
 
 ```bash
-# Your CDM in PC
+# 본인 PC CMD에서 입력
 $ npm i -g @nestjs/cli
-# Check install NestJS Completely
+# NestJS가 설치됬는지 검사
 $ nest
-# Init NestJS in You want Directory Path
+# 원하는 디렉토리 경로에 NestJS 생성
 $ nest new
 ```
 
